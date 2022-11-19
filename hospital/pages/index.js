@@ -1,8 +1,10 @@
+import React from 'react'
+import Login from '../components/Login'
 
-export default function Home() {
+export default function index() {
   return (
-    <div className="bold">
-<h1>Hello there</h1>
+    <div>
+      <Login />
     </div>
   )
 }
