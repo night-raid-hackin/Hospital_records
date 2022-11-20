@@ -42,21 +42,23 @@ contract InfoContract {
         );
     }
 
-    function showDetails(uint256 _patientId)
-        external
-        view
-        returns (PatientInfo memory)
-    {
-        bool _isPresent = false;
-        for (uint256 i = 0; i < patients.length; i++) {
-            if (patients[i].patientId == _patientId) {
-                _isPresent = true;
-                return patients[i];
-            }
-        }
-        PatientInfo memory temporary;
+    function showDetails() external view returns (PatientInfo[] memory) {
+        // bool _isPresent = false;
+        // for (uint256 i = 0; i < patients.length; i++) {
+        //     if (patients[i].patientId == _patientId) {
+        //         _isPresent = true;
+        //         return patients[i];
+        //     }
+        // }
+        // PatientInfo memory temporary;
 
-        if (_isPresent == false) {
+        // if (_isPresent == false) {
+        //     return temporary;
+        // }
+        if (patients.length >= 0) {
+            return patients;
+        } else {
+            PatientInfo[] memory temporary;
             return temporary;
         }
     }

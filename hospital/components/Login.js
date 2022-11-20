@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from "next/head"
-function Login() {
+function Login({onConnect}) {
   return (
     <div>
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-[#252A34]">
@@ -22,7 +22,7 @@ function Login() {
   <div className="border-2 w-10 border-[#FFC7C7] inline-block mb-10"></div>
   <div className="flex flex-col items-center">
   Connect through METAMASK
-<button className="border-2 border-[#FFC7C7] rounded-full text-[#FFC7C7] px-12 py-2 inline-block mt-10 font-semibold hover:bg-[#FFC7C7] hover:text-black">Connect</button>
+<button onClick={onConnect} className="border-2 border-[#FFC7C7] rounded-full text-[#FFC7C7] px-12 py-2 inline-block mt-10 font-semibold hover:bg-[#FFC7C7] hover:text-black">Connect</button>
 
   </div>
 </div>
@@ -34,7 +34,7 @@ HOSPITAL
 <div className="border-2 w-10 border-white inline-block mb-2"></div>
 <div className="mb-10">Connect through METAMASK
 
-<button className="border-2 border-white rounded-full px-12 py-2 inline-block mt-10 font-semibold hover:bg-white hover:text-black">Connect</button>
+<button onClick={onConnect} className="border-2 border-white rounded-full px-12 py-2 inline-block mt-10 font-semibold hover:bg-white hover:text-black">Connect</button>
 
 </div>
 </div>
