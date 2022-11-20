@@ -2,7 +2,8 @@ import React from 'react'
 
 function Display() {
   return (
-    <div><div>
+    <div>
+<div>
     {/* Patient's Name */}
    
    </div>
