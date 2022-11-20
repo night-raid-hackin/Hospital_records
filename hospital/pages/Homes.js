@@ -1,6 +1,71 @@
 import React from 'react'
+import { useState } from 'react';
+import { InfoContractAddress } from '../config';
+import { ethers } from 'ethers';
+import InfoContractAbi from '../../proj1/artifacts/contracts/InfoContract.sol/InfoContract.json';
 
-function Homes({setInput, input, setInput1, input1, setInput2, input2, setInput3, input3, setInput4, input4, setInput5, input5, setInput6, input6, setInput7, input7, addContent, getContent, output}) {
+function Homes() {
+  const [input , setInput] = useState('');
+  const [input1 , setInput1] = useState('');
+  const [input2 , setInput2] = useState('');
+  const [input3 , setInput3] = useState('');
+  const [input4 , setInput4] = useState('');
+  const [input5 , setInput5] = useState('');
+  const [input6 , setInput6] = useState('');
+  const [input7 , setInput7] = useState('');
+  const [info, setInfo] =useState([]);
+
+
+    const addContent= async e =>{
+        e.preventDefault();
+        
+        let content = {
+          name: input,
+          age: input1,
+          gender: input2,
+          weightt: input3,
+          phoneNo: input4,
+          medicProb: input5,
+          misc: input6,
+          bills: input7,
+        }
+      
+        try{
+          const {ethereum} = window;
+          if(ethereum){
+            const provider = new ethers.providers.Web3Provider(ethereum);
+            const signer = provider.getSigner();
+            const InfoContract = new ethers.Contract(
+              InfoContractAddress,
+              InfoContractAbi.abi,
+              signer
+            )
+            // string memory _patientName,
+            //   uint256 _age,
+            //   string memory _sex,
+            //   uint256 _weight,
+            //   uint256 _phoneNo,
+            //   string memory _medicalProb,
+            //   string memory _miscellaneous,
+            //   uint256 _bill
+      
+            InfoContract.addpatient(content.name, content.age, content.gender, content.weightt, content.phoneNo, content.medicProb, content.misc, content.bills).then(res =>{
+              setInfo([...info, content]);
+              console.log("completed adding info");
+            })
+            .catch(err =>{
+              console.log(err);
+            })
+      
+          }
+          else{
+            console.log("ethereum does not exist");
+          }
+        }catch(error){
+          console.log(error);
+        }
+      }
+   
   return (
     <div>
         {/* <HospitalForm/> */}
