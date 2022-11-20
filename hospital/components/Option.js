@@ -106,6 +106,7 @@ export default function Option() {
 
  return (
     <>
+
 <div className="flex flex-col items-center justify-center w-full min-h-screen py-2 bg-gradient-to-r from-[#FF2E63] to-fuchsia-500">
 <div className="bg-[#FF2E63] h-[30vh] rounded-2xl shadow-2xl flex w-2/3 max-w-4xl">
 <div className="w-full flex p-10 bg-[#393E46] rounded-2xl shadow-2xl h-full items-center justify-center">
